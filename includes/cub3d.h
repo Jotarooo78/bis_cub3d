@@ -21,7 +21,6 @@ typedef struct s_color
 	int		r;
 	int		g;
 	int		b;
-	int		rgb;
 
 }			t_color;
 
@@ -39,6 +38,9 @@ typedef struct s_text
 typedef struct s_data
 {
 	char	**map;
+	int		p_x;
+	int		p_y;
+	char	player;
 	t_text	*text;
 
 }			t_data;
@@ -52,7 +54,7 @@ int			parse(t_data *data, char *file);
 // parse map
 
 int			pos_depart(t_data *data);
-int			prep_flood_fill(t_data *data);
+int			parse_map(t_data *data);
 int			start_of_map(char **map);
 
 // parse text color
@@ -61,7 +63,7 @@ int			detect_features(char **map);
 
 // check
 
-int			is_features_init_check(t_data *data);
+int			is_features_init(t_data *data, int ret);
 int			check_features(char *str);
 int			check_dup(t_data *data, int ret);
 int			init_features_data(t_data *data, char **split, int ret);
@@ -75,5 +77,12 @@ void		error(t_data *data, char *str);
 
 int			check_ext(char *file);
 void		print_array(char **array);
+int			skip_whitespace(char c);
+int			is_valid_char_in_map(char **map);
+int			count_map(char **map);
+
+// utils : split with delimiter
+
+char		**split_with_delimiter(const char *s, char c);
 
 #endif
