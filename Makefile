@@ -15,6 +15,7 @@ SRCS = \
 	src/parsing/new_split.c \
 	src/parsing/check_2.c \
 	src/parsing/flood_fill.c \
+	src/parsing/parse_map2.c \
 
 OBJ_DIR = obj
 DEP_DIR = $(OBJ_DIR)
