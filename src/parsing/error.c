@@ -6,7 +6,7 @@
 /*   By: armosnie <armosnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 14:58:53 by armosnie          #+#    #+#             */
-/*   Updated: 2025/10/01 17:52:10 by armosnie         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:46:47 by armosnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ void	free_struct_data(t_data *data)
 {
     if (!data)
         return ;
-    if (data->text->no)
+    if (data->text->no != NULL)
         free(data->text->no);
-    if (data->text->so)
+    if (data->text->so != NULL)
         free(data->text->so);
-    if (data->text->we)
+    if (data->text->we != NULL)
         free(data->text->we);
-    if (data->text->ea)
+    if (data->text->ea != NULL)
         free(data->text->ea);
-    if (data->text->fl)
+    if (data->text->fl != NULL)
         free(data->text->fl);
-    if (data->text->ce)
+    if (data->text->ce != NULL)
         free(data->text->ce);
-    if (data->map)
+    if (data->map != NULL)
         free_array(data->map);
 }
 
@@ -56,6 +56,14 @@ void    free_everything(t_data *data)
 void error(t_data *data, char *str)
 {
 	perror(str);
+	free_struct_data(data);
+    free(data->text);
+    free(data);
+}
+
+void error_2(t_data *data, char *str)
+{
+	ft_putstr_fd(str, 2);
 	free_struct_data(data);
     free(data->text);
     free(data);

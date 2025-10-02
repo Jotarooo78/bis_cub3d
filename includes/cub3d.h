@@ -45,6 +45,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	char	**map;
+	int		map_y;
+	int		map_x;
 	int		p_x;
 	int		p_y;
 	char	player;
@@ -80,7 +82,12 @@ int			init_features_data(t_data *data, char **split, int ret);
 
 void		free_array(char **array);
 void		error(t_data *data, char *str);
+void		error_2(t_data *data, char *str);
 void		free_everything(t_data *data);
+
+// utils : split with delimiter
+
+char		**split_with_delimiter(const char *s, char c);
 
 // utils
 
@@ -89,9 +96,7 @@ void		print_array(char **array);
 int			skip_whitespace(char c);
 int			is_valid_char_in_map(char **map);
 int			count_map(char **map);
-
-// utils : split with delimiter
-
-char		**split_with_delimiter(const char *s, char c);
+int			longest_line(char **map);
+void		get_map_x_y(t_data *data);
 
 #endif
